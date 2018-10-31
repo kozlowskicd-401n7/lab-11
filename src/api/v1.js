@@ -3,7 +3,7 @@
 import express from 'express';
 
 import modelFinder from '../middleware/model-finder.js';
-
+import categories from '../models/categories.js';
 const router = express.Router();
 
 let sendJSON = (data,response) => {
@@ -17,6 +17,7 @@ let sendJSON = (data,response) => {
 router.param('model', modelFinder);
 
 router.get('/api/v1/:model', (request,response,next) => {
+  console.log('model to use:', request.model);
   request.model.find()
     .then( data => {
       const output = {
@@ -30,7 +31,7 @@ router.get('/api/v1/:model', (request,response,next) => {
 
 router.get('/api/v1/:model/:id', (request,response,next) => {
   request.model.find({_id:request.params.id})
-    .then( result => sendJSON(result, response) )
+    .then( result => sendJSON(result[0], response) )
     .catch( next );
 });
 
