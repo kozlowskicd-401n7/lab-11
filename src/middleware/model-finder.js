@@ -3,7 +3,6 @@
 import requireAll from 'require-dir';
 
 const models = requireAll('../models');
-
 /*
 {
   notes: { default: [Function: Notes] },
@@ -12,10 +11,11 @@ const models = requireAll('../models');
 
  */
 
-export default (req,res,next) => {
-  let model = req.params.model;
+export default (request,response,next) => {
+  let model = request.params.model;
+  console.log(model);
   if(model && models[model] && models[model].default) {
-    req.model = models[model].default;
+    request.model = models[model].default;
     next();
   }
   else {

@@ -7,7 +7,8 @@
     "start": "node index.js",
     "watch": "nodemon index.js",
     "test-watch": "jest --watchAll",
-    "test": "jest"
+    "test": "jest --verbose --coverage",
+    "lint": "npm run eslint"
   },
   "keywords": [],
   "author": "",
@@ -19,10 +20,15 @@
     "cors": "^2.8.4",
     "debug": "^3.1.0",
     "dotenv": "^5.0.1",
+    "eslint": "^5.8.0",
     "express": "^4.16.3",
     "jest": "^23.6.0",
+    "mongodb-memory-server": "^2.6.2",
+    "mongoose": "^5.3.8",
+    "mongoose-schema-jsonschema": "^1.1.15",
     "morgan": "^1.9.0",
     "require-dir": "^1.1.0",
+    "superagent": "^4.0.0-beta.5",
     "supertest": "^3.3.0"
   }
 }
