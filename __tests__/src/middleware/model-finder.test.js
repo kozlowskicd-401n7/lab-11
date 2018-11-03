@@ -6,18 +6,18 @@ import modelFinder from '../../../src/middleware/model-finder.js';
 
 describe('Model Finder Middleware', () => {
   it('throws an error if a valid model is not presnt', () => {
-    let req = {params:{}};
-    let res = {};
+    let request = {params:{}};
+    let response = {};
     let next = jest.fn();
-    modelFinder(req,res,next)
+    modelFinder(request,response,next)
     expect(next).toHaveBeenCalledWith('Invalid Model');
   });
   it('returns a model object/function when a valid model is requested', () => {
-    let req = {params:{model:'foo'}};
-    let res = {};
+    let request = {params:{model:'foo'}};
+    let response = {};
     let next = jest.fn();
-    modelFinder(req,res,next);
-    expect(req.model).toBeDefined();
+    modelFinder(request,response,next);
+    expect(request.model).toBeDefined();
     expect(next).toHaveBeenCalledWith();
   });
 });
